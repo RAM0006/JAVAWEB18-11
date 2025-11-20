@@ -25,7 +25,7 @@ pipeline {
                
                 -Dcargo.servlet.user=admin \
                 -Dcargo.servlet.password=admin123 \
-                -Dcargo.remote.uri="http://localhost:8080/manager/text" \
+                -Dcargo.remote.uri="http://localhost:9090/manager/text" \
                 -Dcargo.war.file=target/*.war
                 '''
             }
