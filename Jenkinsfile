@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy to Tomcat 9') {
             steps {
                 sh '''
-                mvn cargo:redeploy \
+               
                 -Dcargo.servlet.user=admin \
                 -Dcargo.servlet.password=admin123 \
                 -Dcargo.remote.uri="http://localhost:8080/manager/text" \
