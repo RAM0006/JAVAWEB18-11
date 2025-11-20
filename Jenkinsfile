@@ -7,6 +7,7 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/RAM0006/JAVAWEB18-11.git', branch: 'main'
@@ -19,16 +20,15 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat 9') {
+        stage('Deploy WAR') {
             steps {
                 sh '''
-               
-                -Dcargo.servlet.user=admin \
-                -Dcargo.servlet.password=admin123 \
-                -Dcargo.remote.uri="http://localhost:9090/manager/text" \
-                -Dcargo.war.file=target/*.war
+                curl -u admin:admin123 \
+                -T target/webapp.war \
+                "http://localhost:9090/manager/text/deploy?path=/webapp&update=true"
                 '''
             }
         }
+
     }
 }
